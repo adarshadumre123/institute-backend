@@ -11,7 +11,12 @@ export const createExam = async (req, res) => {
       totalQuestions,
       totalMarks,
       passingMarks,
+      startTime,
+      endTime
     } = req.body;
+
+
+    console.log(req.body)
 
     const exam = await Exam.create({
       title,
@@ -21,6 +26,8 @@ export const createExam = async (req, res) => {
       totalQuestions,
       totalMarks,
       passingMarks,
+      startTime,
+      endTime,
       createdBy: req.user.id,
     });
 
@@ -41,18 +48,21 @@ export const createExam = async (req, res) => {
 };
 
 export const getAllExam=async(req,res)=>{
- try {
-  const exam = (await Exam.find().populate("createdBy","firstName lastName email")).sort({createdAt:-1});
+try {
+  const exam = await Exam.find()
+    .populate("createdBy", "firstName lastName email")
+    .sort({ createdAt: -1 });
+
   res.status(200).json({
-   success:true,
-   exam
-  })
- } catch (error) {
+    success: true,
+    exam
+  });
+} catch (error) {
   res.status(500).json({
-    success:false,
-    message:error.message
-  })
- }
+    success: false,
+    message: error.message
+  });
+}
 }
 
 export const getSingleExam =async(req,res)=>{

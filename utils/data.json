@@ -1,0 +1,139 @@
+[
+  { "question": "What does HTML stand for?", "options": ["Hyper Text Markup Language", "High Text Markup Language", "Hyperlinks Text Mark Language", "Home Tool Markup Language"], "correctAnswer": "Hyper Text Markup Language", "subject": "Web", "marks": 1, "setNumber": 1 },
+
+  { "question": "Which tag is used for JavaScript?", "options": ["<js>", "<javascript>", "<script>", "<code>"], "correctAnswer": "<script>", "subject": "Web", "marks": 1, "setNumber": 1 },
+
+  { "question": "CSS is used for?", "options": ["Database", "Styling", "Logic", "Server"], "correctAnswer": "Styling", "subject": "Web", "marks": 1, "setNumber": 1 },
+
+  { "question": "Which language runs in browser?", "options": ["Java", "Python", "JavaScript", "C++"], "correctAnswer": "JavaScript", "subject": "Web", "marks": 1, "setNumber": 1 },
+
+  { "question": "Node.js is built on?", "options": ["Chrome V8", "Java engine", "Python engine", "Ruby engine"], "correctAnswer": "Chrome V8", "subject": "Backend", "marks": 1, "setNumber": 1 },
+
+  { "question": "MongoDB is a?", "options": ["SQL DB", "NoSQL DB", "Language", "OS"], "correctAnswer": "NoSQL DB", "subject": "Database", "marks": 1, "setNumber": 1 },
+
+  { "question": "HTTP GET method is used for?", "options": ["Sending data", "Deleting data", "Fetching data", "Updating data"], "correctAnswer": "Fetching data", "subject": "Backend", "marks": 1, "setNumber": 1 },
+
+  { "question": "HTTP POST method is used for?", "options": ["Fetch data", "Send data", "Delete data", "Read data"], "correctAnswer": "Send data", "subject": "Backend", "marks": 1, "setNumber": 1 },
+
+  { "question": "React is a?", "options": ["Framework", "Library", "Language", "Database"], "correctAnswer": "Library", "subject": "Frontend", "marks": 1, "setNumber": 1 },
+
+  { "question": "React is created by?", "options": ["Google", "Facebook", "Microsoft", "Amazon"], "correctAnswer": "Facebook", "subject": "Frontend", "marks": 1, "setNumber": 1 },
+
+  { "question": "JavaScript file extension?", "options": [".js", ".java", ".jsx", ".ts"], "correctAnswer": ".js", "subject": "Web", "marks": 1, "setNumber": 1 },
+
+  { "question": "Which is NOT a programming language?", "options": ["Python", "HTML", "Java", "C++"], "correctAnswer": "HTML", "subject": "Web", "marks": 1, "setNumber": 1 },
+
+  { "question": "Which company created Node.js?", "options": ["Ryan Dahl", "Google", "Facebook", "Microsoft"], "correctAnswer": "Ryan Dahl", "subject": "Backend", "marks": 1, "setNumber": 1 },
+
+  { "question": "MongoDB stores data in?", "options": ["Tables", "Documents", "Files", "Rows"], "correctAnswer": "Documents", "subject": "Database", "marks": 1, "setNumber": 1 },
+
+  { "question": "Which is frontend framework?", "options": ["Express", "Django", "React", "MongoDB"], "correctAnswer": "React", "subject": "Frontend", "marks": 1, "setNumber": 1 },
+
+  { "question": "What is RAM?", "options": ["Storage", "Memory", "CPU", "GPU"], "correctAnswer": "Memory", "subject": "Computer", "marks": 1, "setNumber": 1 },
+
+  { "question": "CPU stands for?", "options": ["Central Processing Unit", "Computer Personal Unit", "Central Program Unit", "Control Processing Unit"], "correctAnswer": "Central Processing Unit", "subject": "Computer", "marks": 1, "setNumber": 1 },
+
+  { "question": "Which is backend framework?", "options": ["React", "Express", "Vue", "HTML"], "correctAnswer": "Express", "subject": "Backend", "marks": 1, "setNumber": 1 },
+
+  { "question": "Which database is relational?", "options": ["MongoDB", "MySQL", "Firebase", "Redis"], "correctAnswer": "MySQL", "subject": "Database", "marks": 1, "setNumber": 1 },
+
+  { "question": "Which is NOT database?", "options": ["MongoDB", "MySQL", "Node.js", "PostgreSQL"], "correctAnswer": "Node.js", "subject": "Database", "marks": 1, "setNumber": 1 },
+
+  { "question": "Which is used for styling?", "options": ["HTML", "CSS", "JS", "Node"], "correctAnswer": "CSS", "subject": "Web", "marks": 1, "setNumber": 1 },
+
+  { "question": "Which is JavaScript runtime?", "options": ["Browser", "Node.js", "Both", "None"], "correctAnswer": "Both", "subject": "Backend", "marks": 1, "setNumber": 1 },
+
+  { "question": "Which is version control system?", "options": ["Git", "MongoDB", "Node", "React"], "correctAnswer": "Git", "subject": "Tools", "marks": 1, "setNumber": 1 },
+
+  { "question": "Git is used for?", "options": ["Database", "Version control", "Frontend", "Hosting"], "correctAnswer": "Version control", "subject": "Tools", "marks": 1, "setNumber": 1 },
+
+  { "question": "Which is cloud service?", "options": ["AWS", "HTML", "CSS", "JS"], "correctAnswer": "AWS", "subject": "Cloud", "marks": 1, "setNumber": 1 },
+
+  { "question": "Which is NOT browser?", "options": ["Chrome", "Firefox", "Node", "Edge"], "correctAnswer": "Node", "subject": "Web", "marks": 1, "setNumber": 1 },
+
+  { "question": "Which is used to connect MongoDB?", "options": ["Mongoose", "Express", "React", "Redux"], "correctAnswer": "Mongoose", "subject": "Backend", "marks": 1, "setNumber": 1 },
+
+  { "question": "What is API?", "options": ["Application Programming Interface", "App Program Input", "Advanced Program Interface", "None"], "correctAnswer": "Application Programming Interface", "subject": "Backend", "marks": 1, "setNumber": 1 },
+
+  { "question": "REST API uses?", "options": ["HTTP", "FTP", "SMTP", "TCP only"], "correctAnswer": "HTTP", "subject": "Backend", "marks": 1, "setNumber": 1 },
+
+  { "question": "JSON stands for?", "options": ["Java Script Object Notation", "Java Source Object Network", "Java Simple Output Node", "None"], "correctAnswer": "Java Script Object Notation", "subject": "Web", "marks": 1, "setNumber": 1 },
+
+  { "question": "Which is data format?", "options": ["JSON", "HTML", "CSS", "JS"], "correctAnswer": "JSON", "subject": "Web", "marks": 1, "setNumber": 1 },
+
+  { "question": "Which is NOT programming language?", "options": ["Python", "C", "HTML", "Java"], "correctAnswer": "HTML", "subject": "Web", "marks": 1, "setNumber": 1 },
+
+  { "question": "Which is used for backend?", "options": ["React", "Node.js", "CSS", "HTML"], "correctAnswer": "Node.js", "subject": "Backend", "marks": 1, "setNumber": 2 },
+
+  { "question": "Which is frontend tool?", "options": ["React", "Express", "MongoDB", "Node"], "correctAnswer": "React", "subject": "Frontend", "marks": 1, "setNumber": 2 },
+
+  { "question": "Database used in MERN?", "options": ["MySQL", "MongoDB", "Oracle", "SQLite"], "correctAnswer": "MongoDB", "subject": "Database", "marks": 1, "setNumber": 2 },
+
+  { "question": "Which is NOT JS framework?", "options": ["Angular", "React", "Vue", "Laravel"], "correctAnswer": "Laravel", "subject": "Web", "marks": 1, "setNumber": 2 },
+
+  { "question": "Which runs JS outside browser?", "options": ["Node.js", "Chrome", "Firefox", "Edge"], "correctAnswer": "Node.js", "subject": "Backend", "marks": 1, "setNumber": 2 },
+
+  { "question": "Which is package manager?", "options": ["npm", "git", "docker", "aws"], "correctAnswer": "npm", "subject": "Tools", "marks": 1, "setNumber": 2 },
+
+  { "question": "Which is container tool?", "options": ["Docker", "Git", "React", "Node"], "correctAnswer": "Docker", "subject": "Tools", "marks": 1, "setNumber": 2 },
+
+  { "question": "Which is cloud provider?", "options": ["AWS", "HTML", "CSS", "JS"], "correctAnswer": "AWS", "subject": "Cloud", "marks": 1, "setNumber": 2 },
+
+  { "question": "Which is HTTP status code for success?", "options": ["200", "404", "500", "403"], "correctAnswer": "200", "subject": "Backend", "marks": 1, "setNumber": 2 },
+
+  { "question": "Which is NOT HTTP method?", "options": ["GET", "POST", "SEND", "DELETE"], "correctAnswer": "SEND", "subject": "Backend", "marks": 1, "setNumber": 2 },
+
+  { "question": "Which is used for authentication?", "options": ["JWT", "HTML", "CSS", "SQL"], "correctAnswer": "JWT", "subject": "Backend", "marks": 1, "setNumber": 2 },
+
+  { "question": "JWT stands for?", "options": ["JSON Web Token", "Java Web Tool", "JavaScript Web Token", "None"], "correctAnswer": "JSON Web Token", "subject": "Backend", "marks": 1, "setNumber": 2 },
+
+  { "question": "Which is used for state management?", "options": ["Redux", "MongoDB", "Express", "Node"], "correctAnswer": "Redux", "subject": "Frontend", "marks": 1, "setNumber": 2 },
+
+  { "question": "Which is markup language?", "options": ["HTML", "JS", "Python", "C"], "correctAnswer": "HTML", "subject": "Web", "marks": 1, "setNumber": 2 },
+
+  { "question": "Which is styling language?", "options": ["CSS", "JS", "Java", "Python"], "correctAnswer": "CSS", "subject": "Web", "marks": 1, "setNumber": 2 },
+
+  { "question": "Which is programming language?", "options": ["HTML", "CSS", "JavaScript", "XML"], "correctAnswer": "JavaScript", "subject": "Web", "marks": 1, "setNumber": 2 },
+
+  { "question": "Which is backend framework?", "options": ["Express", "React", "Vue", "HTML"], "correctAnswer": "Express", "subject": "Backend", "marks": 1, "setNumber": 2 },
+
+  { "question": "Which is frontend library?", "options": ["React", "Node", "MongoDB", "Express"], "correctAnswer": "React", "subject": "Frontend", "marks": 1, "setNumber": 2 },
+
+  { "question": "Which is database query language?", "options": ["SQL", "HTML", "CSS", "JS"], "correctAnswer": "SQL", "subject": "Database", "marks": 1, "setNumber": 2 },
+
+  { "question": "Which is NoSQL database?", "options": ["MongoDB", "MySQL", "Oracle", "SQLite"], "correctAnswer": "MongoDB", "subject": "Database", "marks": 1, "setNumber": 2 },
+
+  { "question": "Which is backend language?", "options": ["Node.js", "HTML", "CSS", "XML"], "correctAnswer": "Node.js", "subject": "Backend", "marks": 1, "setNumber": 2 },
+
+  { "question": "Which is frontend tool?", "options": ["React", "MongoDB", "Express", "Node"], "correctAnswer": "React", "subject": "Frontend", "marks": 1, "setNumber": 3 },
+
+  { "question": "Which is database?", "options": ["MongoDB", "React", "Node", "HTML"], "correctAnswer": "MongoDB", "subject": "Database", "marks": 1, "setNumber": 3 },
+
+  { "question": "Which is backend framework?", "options": ["Express", "React", "CSS", "HTML"], "correctAnswer": "Express", "subject": "Backend", "marks": 1, "setNumber": 3 },
+
+  { "question": "Which is JS runtime?", "options": ["Node.js", "Browser", "Both", "None"], "correctAnswer": "Both", "subject": "Backend", "marks": 1, "setNumber": 3 },
+
+  { "question": "Which is used for API?", "options": ["HTTP", "CSS", "HTML", "JS"], "correctAnswer": "HTTP", "subject": "Backend", "marks": 1, "setNumber": 3 },
+
+  { "question": "Which is NOT database?", "options": ["MongoDB", "MySQL", "React", "PostgreSQL"], "correctAnswer": "React", "subject": "Database", "marks": 1, "setNumber": 3 },
+
+  { "question": "Which is cloud service?", "options": ["AWS", "HTML", "CSS", "JS"], "correctAnswer": "AWS", "subject": "Cloud", "marks": 1, "setNumber": 3 },
+
+  { "question": "Which is version control?", "options": ["Git", "MongoDB", "Node", "React"], "correctAnswer": "Git", "subject": "Tools", "marks": 1, "setNumber": 3 },
+
+  { "question": "Which is package manager?", "options": ["npm", "HTML", "CSS", "JS"], "correctAnswer": "npm", "subject": "Tools", "marks": 1, "setNumber": 3 },
+
+  { "question": "Which is HTTP method?", "options": ["GET", "RUN", "MAKE", "DO"], "correctAnswer": "GET", "subject": "Backend", "marks": 1, "setNumber": 3 },
+
+  { "question": "Which is used for styling?", "options": ["CSS", "JS", "Node", "MongoDB"], "correctAnswer": "CSS", "subject": "Web", "marks": 1, "setNumber": 3 },
+
+  { "question": "Which is markup language?", "options": ["HTML", "JS", "Python", "C"], "correctAnswer": "HTML", "subject": "Web", "marks": 1, "setNumber": 3 },
+
+  { "question": "Which is frontend framework?", "options": ["React", "Express", "MongoDB", "Node"], "correctAnswer": "React", "subject": "Frontend", "marks": 1, "setNumber": 3 },
+
+  { "question": "Which is backend tool?", "options": ["Node.js", "React", "CSS", "HTML"], "correctAnswer": "Node.js", "subject": "Backend", "marks": 1, "setNumber": 3 },
+
+  { "question": "Which is database type?", "options": ["SQL", "NoSQL", "Both", "None"], "correctAnswer": "NoSQL", "subject": "Database", "marks": 1, "setNumber": 3 },
+
+  { "question": "Which is authentication method?", "options": ["JWT", "HTML", "CSS", "JS"], "correctAnswer": "JWT", "subject": "Backend", "marks": 1, "setNumber": 3 }
+]
