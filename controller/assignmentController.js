@@ -119,5 +119,4 @@ export const generateAssignment = async(req,res)=>{
       message:error.message
    })
   }
-
 }

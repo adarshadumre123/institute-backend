@@ -6,7 +6,7 @@ import authRoutes from "./routes/authRoutes.js"
 import examRoutes from "./routes/examRoutes.js"
 import assignmentRoutes from "./routes/assignmentRoutes.js"
 dotenv.config()
-
+console.log(process.env.GEMINI_API_KEY)
 const app = express()
 app.use(cors())
 app.use(express.json())
