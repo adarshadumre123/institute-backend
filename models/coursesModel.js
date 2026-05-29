@@ -15,7 +15,7 @@ const courseSchema=new mongoose.Schema({
     },
     price:{
         type:String,
-        required:true
+        required:true 
     },
 
     createdBy:{
