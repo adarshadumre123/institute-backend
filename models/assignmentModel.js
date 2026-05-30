@@ -21,6 +21,10 @@ const assignmentSchema = new mongoose.Schema({
         type:String,
         required:true
     },
+    numberOfQuestion:{
+        type:Number,
+        required:true
+    },
     difficulty:{
         type:String,
         enum:["easy","medium","hard"],
