@@ -49,7 +49,7 @@ export const loginUser = async(req,res)=>{
     try {
         const { email, password } = req.body;
 
-    
+     
     if (!email || !password) {
       return res.status(400).json({
         message: "Email and password required",
@@ -97,6 +97,29 @@ export const loginUser = async(req,res)=>{
     }
 }
 
+export const getUserById=async(req,res)=>{
+  try {
+    const{id}=req.params;
+    const user = await User.findById(id)
+    if(!user){
+      return res.status(400).json({
+        success:false,
+        message:"user not exists"
+      })
+      
+    }
+    res.status(200).json({
+      success:true,
+      message:"user is successfully found by id",
+      user
+    })
+  } catch (error) {
+    res.status(400).json({
+      success:false,
+      message:error.message || "user is unable to found by id"
+    })
+  }
+}
 export const getAllUser =async(req,res)=>{
     try {
         const users=await User.find().select("-password")
