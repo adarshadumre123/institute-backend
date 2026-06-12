@@ -8,9 +8,11 @@ try {
     const  totalStudents = await User.countDocuments({role:'student'})
     const  totalTeachers = await User.countDocuments({role:'teacher'})
     const totalExam = await Exam.countDocuments()
+
     const totalCourse = await Course.countDocuments()
     res.status(200).json({
         success:true,
+        message:"count successfully",
         stats:{
             totalStudents,
             totalCourse,
