@@ -14,7 +14,7 @@ router.put(
   roleMiddleware("teacher", "admin"),
   updateExam
 );
-router.delete("/delete/:id",userAuth,roleMiddleware("admin"),deleteExam)
+router.delete("/delete/:id",userAuth,roleMiddleware("admin","teacher"),deleteExam)
 
 
 export default router

@@ -53,6 +53,7 @@ try {
     .populate("createdBy", "firstName lastName email")
     .sort({ createdAt: -1 });
 
+    
   res.status(200).json({
     success: true,
     exam
@@ -67,6 +68,7 @@ try {
 
 export const getSingleExam =async(req,res)=>{
   try {
+    
     const exam = await Exam.findById(req.params.id).populate("createdBy","firstName lastName email").populate("allowedStudents","firstName lastName email")
     if(!exam){
       return res.status(400).json({
@@ -75,9 +77,20 @@ export const getSingleExam =async(req,res)=>{
       })
     }
 
+    const status=""
+
+    if(Date.now()<exam.startTime){
+      exam.status("schedule")
+    }else if(Date.now()>exam.endTime){
+      exam.status("completed")
+    }else{
+      exam.status("live")
+    }
+
     return res.status(200).json({
         success:true,
-        exam
+        exam,
+        status
       })
 
   } catch (error) {
@@ -93,7 +106,7 @@ export const updateExam=async(req,res)=>{
     const exam = await Exam.findByIdAndUpdate(
       req.params.id,req.body,
       {
-        new:true,
+        returnDocument: "after",
         runValidators:true
       }
     );
