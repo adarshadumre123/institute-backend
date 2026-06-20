@@ -19,6 +19,7 @@ app.use("/api/v1/exams", examRoutes);
 app.use("/api/v1/assignment", assignmentRoutes);
 app.use("/api/v1/course", courseRoutes);
 app.use("/api/v1/stats", detailsRoutes);
+app.use("/api/v1/", detailsRoutes);
 
 
 const port = process.env.PORT || 3000
