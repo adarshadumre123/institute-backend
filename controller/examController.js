@@ -77,16 +77,6 @@ export const getSingleExam =async(req,res)=>{
       })
     }
 
-    const status=""
-
-    if(Date.now()<exam.startTime){
-      exam.status("schedule")
-    }else if(Date.now()>exam.endTime){
-      exam.status("completed")
-    }else{
-      exam.status("live")
-    }
-
     return res.status(200).json({
         success:true,
         exam,

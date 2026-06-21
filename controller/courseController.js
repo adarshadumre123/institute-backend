@@ -1,8 +1,8 @@
 import Course from '../models/coursesModel.js'
 export const createCourse = async (req, res) => {
     try {
-        const { course, subject, price, description } = req.body;
-        if (!course || !subject || !price || !description) {
+        const { course, subject, price, shortDescription ,longDescription} = req.body;
+        if (!course || !subject || !price || !longDescription ||!shortDescription) {
             return res.status(400).json({
                 message: "all course field are required"
             })
@@ -11,7 +11,8 @@ export const createCourse = async (req, res) => {
             course,
             subject,
             price,
-            description,
+            shortDescription,
+            longDescription,
             createdBy: req.user.id
         })
         res.status(200).json({
@@ -46,7 +47,7 @@ export const getAllCourse = async (req, res) => {
 export const getCourseById = async (req, res) => {
     try {
         const { id } = req.params
-        const course = await Course.findById(req.params.id).populate("createdBy", "firstName lastName email").populate("allowedStudents", "firstName lastName email")
+        const course = await Course.findById(req.params.id).populate("createdBy", "firstName lastName email")
         if (!course) {
             return res.status(400).json({
                 message: "no course are find with this id ",

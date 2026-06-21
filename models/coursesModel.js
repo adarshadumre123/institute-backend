@@ -12,7 +12,11 @@ const courseSchema = new mongoose.Schema(
       required: true,
     },
 
-    description: {
+     shortDescription: {
+      type: String,
+      required: true,
+    },
+     longDescription: {
       type: String,
       required: true,
     },
