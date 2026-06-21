@@ -159,7 +159,7 @@ export const deleteUser=async(req,res)=>{
 
 export const updateUser = async(req,res)=>{
  try {
-   const{id}=req.params
+   const{id}=req.user.id
    const user = await User.findByIdAndUpdate(id,req.body,{ 
          new:true,
          runValidators:true   
