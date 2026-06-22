@@ -1,9 +1,9 @@
 import express from 'express'
 import userAuth from '../middleware/authMiddleware.js';
-import { enrolledCourse } from '../controller/enrollmentController.js';
+import { createPayment } from '../controller/paymentController.js';
 
 const router = express.Router();
 
-router.post("/enrolled",userAuth,enrolledCourse)
+router.post('/create-payment',userAuth,createPayment)
 
 export default router

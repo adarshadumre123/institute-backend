@@ -28,7 +28,7 @@ export const enrolledCourse = async(req,res)=>{
              course:courseId,
              paymentStatus:"completed"
          })
-
+         course.enrolledStudents.push(studentId);
          await course.save();
          return res.status(200).json({
              success:true,

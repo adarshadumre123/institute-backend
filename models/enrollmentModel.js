@@ -11,14 +11,12 @@ const enrollmentSchema = new mongoose.Schema({
         ref:"Course",
         required:true
     },
-    paymentStatus:{
-        type:String,
-        enum:['pending','completed'],
-        default:"pending"
-    },
-    transactionId:{
-        type:String
-    }
+    payment:{
+   type:mongoose.Schema.Types.ObjectId,
+   ref:"Payment"
+},
+
+   
 },{
     timestamps:true,
 })

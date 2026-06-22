@@ -8,6 +8,10 @@ import examRoutes from "./routes/examRoutes.js"
 import assignmentRoutes from "./routes/assignmentRoutes.js"
 import courseRoutes from "./routes/courseRoutes.js"
 import detailsRoutes from "./routes/detailsRoutes.js"
+import enrollmentRoutes from "./routes/enrollmentRoutes.js"
+import paymentRoutes from "./routes/paymentRoutes.js"
+
+
 
 const app = express()
 app.use(cors())
@@ -19,7 +23,8 @@ app.use("/api/v1/exams", examRoutes);
 app.use("/api/v1/assignment", assignmentRoutes);
 app.use("/api/v1/course", courseRoutes);
 app.use("/api/v1/stats", detailsRoutes);
-app.use("/api/v1/", detailsRoutes);
+app.use("/api/v1/enroll",enrollmentRoutes );
+app.use("/api/v1/payment",paymentRoutes );
 
 
 const port = process.env.PORT || 3000
