@@ -80,7 +80,6 @@ export const getSingleExam =async(req,res)=>{
     return res.status(200).json({
         success:true,
         exam,
-        status
       })
 
   } catch (error) {

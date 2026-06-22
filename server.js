@@ -10,6 +10,7 @@ import courseRoutes from "./routes/courseRoutes.js"
 import detailsRoutes from "./routes/detailsRoutes.js"
 import enrollmentRoutes from "./routes/enrollmentRoutes.js"
 import paymentRoutes from "./routes/paymentRoutes.js"
+import questionsRoutes from "./routes/questionsRoutes.js"
 
 
 
@@ -25,6 +26,7 @@ app.use("/api/v1/course", courseRoutes);
 app.use("/api/v1/stats", detailsRoutes);
 app.use("/api/v1/enroll",enrollmentRoutes );
 app.use("/api/v1/payment",paymentRoutes );
+app.use("/api/v1/question",questionsRoutes );
 
 
 const port = process.env.PORT || 3000
