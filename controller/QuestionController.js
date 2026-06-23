@@ -94,6 +94,7 @@ export const getAllQuestions = async (req, res) => {
     res.status(200).json({
       success: true,
       questions,
+      message:"questions are get succesfully"
     });
 
   } catch (error) {
