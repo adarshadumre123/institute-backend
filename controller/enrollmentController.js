@@ -22,11 +22,11 @@ export const enrolledCourse = async(req,res)=>{
              message:'already enrolled'
          })
      }
-     if(course.price===0){
+     
+     if(Number(course.price)===0){
          const enrollment = await Enrollment.create({
              student:studentId,
              course:courseId,
-             paymentStatus:"completed"
          })
          course.enrolledStudents.push(studentId);
          await course.save();
@@ -36,6 +36,7 @@ export const enrolledCourse = async(req,res)=>{
              enrollment
          })
      };
+
      return res.status(201).json({
          success:true,
          paymentRequired:true,

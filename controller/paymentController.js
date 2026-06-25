@@ -1,4 +1,3 @@
-import coursesModel from '../models/coursesModel.js'
 import Course from '../models/coursesModel.js'
 import Enrollment from '../models/enrollmentModel.js'
 import Payment from '../models/paymentModel.js'
@@ -51,6 +50,7 @@ export const createPayment = async (req, res) => {
 
         return res.status(201).json({
             success: true,
+            paymentId: payment._id,
             paymentData: {
                 amount: course.price,
                 tax_amount: 0,
@@ -63,11 +63,9 @@ export const createPayment = async (req, res) => {
                 product_service_charge: 0,
                 product_delivery_charge: 0,
 
-                success_url:
-                    "http://localhost:8000/api/v1/payment/verify-payment",
+                success_url: `${process.env.BACKEND_URL}/api/v1/payment/verify-payment`,
 
-                failure_url:
-                    "http://localhost:5173/payment-failed",
+                failure_url: `${process.env.FRONTEND_URL}/payment-failed`,
 
                 signed_field_names:
                     "total_amount,transaction_uuid,product_code",
