@@ -50,3 +50,4 @@ export const enrolledCourse = async(req,res)=>{
     })
    }
 }
+
