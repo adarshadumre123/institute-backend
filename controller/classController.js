@@ -31,7 +31,9 @@ export const createClass=async(req,res)=>{
 
 export const getAllClass = async(req,res)=>{
     try {
-        const newClass = await Class.find().populate("createdBy","firstName lastName email")
+        const newClass = await Class.find().populate("createdBy","firstName lastName email").populate("course",
+            "course subject"
+        )
         res.status(200).json({
             success:true,
             message:"class find successfully",
