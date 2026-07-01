@@ -1,4 +1,5 @@
 import Course from '../models/coursesModel.js'
+import Enrollment from '../models/enrollmentModel.js';
 export const createCourse = async (req, res) => {
     try {
         const { course, subject, price, shortDescription ,longDescription} = req.body;
@@ -30,42 +31,73 @@ export const createCourse = async (req, res) => {
 
 export const getAllCourse = async (req, res) => {
     try {
-        const course = await Course.find().populate("createdBy", "firstName lastName email")
+        const courses = await Course.find()
+            .populate("createdBy", "firstName lastName email");
+
+        const enrollments = await Enrollment.find({
+            student: req.user.id
+        });
+
+        const enrolledCourseIds = enrollments.map(
+            e => e.course.toString()
+        );
+
+        const updatedCourses = courses.map(course => ({
+            ...course.toObject(),
+            isEnrolled: enrolledCourseIds.includes(course._id.toString())
+        }));
+
         res.status(200).json({
             success: true,
-            message: "course get successfully",
-            course
-        })
+            course: updatedCourses
+        });
+
     } catch (error) {
         res.status(400).json({
             success: false,
             message: error.message
-        })
+        });
     }
-}
+};
 
 export const getCourseById = async (req, res) => {
     try {
-        const { id } = req.params
-        const course = await Course.findById(req.params.id).populate("createdBy", "firstName lastName email")
+        const { id } = req.params;
+
+        const course = await Course.findById(id)
+            .populate("createdBy", "firstName lastName email");
+
         if (!course) {
-            return res.status(400).json({
-                message: "no course are find with this id ",
-                course
-            })
+            return res.status(404).json({
+                success: false,
+                message: "Course not found"
+            });
         }
-        res.status(200).json({
+
+        // Check enrollment
+        const enrollment = await Enrollment.findOne({
+            student: req.user.id,
+            course: id
+        });
+
+        const updatedCourse = {
+            ...course.toObject(),
+            isEnrolled: !!enrollment
+        };
+
+        return res.status(200).json({
             success: true,
-            message: 'course fetched successfully',
-            course
-        })
+            message: "Course fetched successfully",
+            course: updatedCourse
+        });
+
     } catch (error) {
-        res.status(400).json({
+        return res.status(500).json({
             success: false,
             message: error.message
-        })
+        });
     }
-}
+};
 
 
 export const updateCourse = async (req, res) => {
