@@ -11,6 +11,7 @@ export const createExam = async (req, res) => {
       totalQuestions,
       totalMarks,
       passingMarks,
+      course,
       startTime,
       endTime
     } = req.body;
@@ -26,6 +27,7 @@ export const createExam = async (req, res) => {
       totalQuestions,
       totalMarks,
       passingMarks,
+      course,
       startTime,
       endTime,
       createdBy: req.user.id,
@@ -50,7 +52,9 @@ export const createExam = async (req, res) => {
 export const getAllExam=async(req,res)=>{
 try {
   const exam = await Exam.find()
-    .populate("createdBy", "firstName lastName email")
+    .populate("createdBy", "firstName lastName email").populate("course",
+    "course subject"
+        )
     .sort({ createdAt: -1 });
 
     

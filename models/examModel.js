@@ -47,6 +47,12 @@ const examSchema = new mongoose.Schema(
       required: true,
     },
 
+    course:{
+            type:mongoose.Schema.Types.ObjectId,
+            ref:"Course",
+            required:true
+        },
+
     allowedStudents: [
       {
         type: mongoose.Schema.Types.ObjectId,
