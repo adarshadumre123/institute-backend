@@ -5,7 +5,7 @@ export const createCourse = async (req, res) => {
         const { course, subject, price, shortDescription ,longDescription} = req.body;
         if (!course || !subject || !price || !longDescription ||!shortDescription) {
             return res.status(400).json({
-                message: "all course field are required"
+                message: "all field are required"
             })
         }
         const coursed = await Course.create({

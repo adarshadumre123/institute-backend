@@ -73,7 +73,9 @@ try {
 export const getSingleExam =async(req,res)=>{
   try {
     
-    const exam = await Exam.findById(req.params.id).populate("createdBy","firstName lastName email").populate("allowedStudents","firstName lastName email")
+    const exam = await Exam.findById(req.params.id).populate("createdBy","firstName lastName email").populate("allowedStudents","firstName lastName email").populate("course",
+    "course subject"
+        )
     if(!exam){
       return res.status(400).json({
         success:false,

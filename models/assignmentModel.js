@@ -30,7 +30,11 @@ const assignmentSchema = new mongoose.Schema({
     },
     totalQuestions:{
         type:Number,
-    }
+    }, 
+    course: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Course",
+    },
 },{
     timestamps:true
 }
