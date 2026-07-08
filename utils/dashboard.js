@@ -3,36 +3,37 @@ import Enrollment from '../models/enrollmentModel.js';
 import Class from "../models/classModel.js"
 import Assignment from './../models/assignmentModel.js';
 import Exam from './../models/examModel.js';
+import User from './../models/userModels.js';
 
 
-export const teacherDashboard=async(req,res)=>{
+export const teacherDashboard = async (req, res) => {
     try {
-        const teacherId=req.user._id;
+        const teacherId = req.user._id;
         const courses = await Course.find({
-            createdBy:teacherId
+            createdBy: teacherId
         })
-        const courseIds = courses.map(course=>course._id)
+        const courseIds = courses.map(course => course._id)
         const totalStudents = await Enrollment.countDocuments({
-            course:{
-                $in:courseIds
+            course: {
+                $in: courseIds
             }
         })
         const totalClasses = await Class.countDocuments({
-            course:{
-                $in:courseIds
+            course: {
+                $in: courseIds
             }
         })
 
-        const totalAssignments=await Assignment.countDocuments({
-             course:{
-                $in:courseIds
+        const totalAssignments = await Assignment.countDocuments({
+            course: {
+                $in: courseIds
             }
         })
-          const totalExams = await Exam.countDocuments({
+        const totalExams = await Exam.countDocuments({
             course: { $in: courseIds }
         });
 
-       res.status(200).json({
+        res.status(200).json({
             success: true,
             dashboard: {
                 totalCourses: courses.length,
@@ -48,5 +49,65 @@ export const teacherDashboard=async(req,res)=>{
             success: false,
             message: error.message
         });
+    }
+}
+
+export const studentDashboard = async (req, res) => {
+    try {
+        const studentId = req.user._id;
+
+        // Get all enrollments of the student
+        const enrollments = await Enrollment.find({
+            student: studentId
+        });
+
+const name = await User.findById(studentId).select("firstName")
+
+        // Extract course IDs
+        const courseIds = enrollments.map(enrollment => enrollment.course);
+
+        // Dashboard statistics
+        const totalCourses = await Course.countDocuments();
+
+        const enrolledCourses = enrollments.length;
+
+        const totalClasses = await Class.countDocuments({
+            course: { $in: courseIds }
+        });
+
+        const totalExam = await Exam.countDocuments({
+            course: { $in: courseIds }
+        });
+
+        const totalAssignment = await Assignment.countDocuments({
+            course: { $in: courseIds }
+        });
+
+        res.status(200).json({
+            success: true,
+            dashboard: {
+                totalCourses,
+                enrolledCourses,
+                totalClasses,
+                totalExam,
+                totalAssignment,
+                name
+            }
+        });
+
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: error.message
+        });
+    }
+};
+
+
+export const adminDashboard=async(req,res)=>{
+    try {
+        
+    } catch (error) {
+        
     }
 }

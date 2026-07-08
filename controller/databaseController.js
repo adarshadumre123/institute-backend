@@ -9,7 +9,6 @@ import Course from './../models/coursesModel.js';
 
 export const database=async(req,res)=>{
     try {
-        
 const enrollments = await Enrollment.find()
     .populate("student")
     .populate("course")
