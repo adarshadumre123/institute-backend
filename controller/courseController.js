@@ -2,8 +2,8 @@ import Course from '../models/coursesModel.js'
 import Enrollment from '../models/enrollmentModel.js';
 export const createCourse = async (req, res) => {
     try {
-        const { course, subject, price, shortDescription ,longDescription} = req.body;
-        if (!course || !subject || !price || !longDescription ||!shortDescription) {
+        const { course, subject, price, shortDescription, longDescription } = req.body;
+        if (!course || !subject || !price || !longDescription || !shortDescription) {
             return res.status(400).json({
                 message: "all field are required"
             })
@@ -42,10 +42,22 @@ export const getAllCourse = async (req, res) => {
             e => e.course.toString()
         );
 
-        const updatedCourses = courses.map(course => ({
-            ...course.toObject(),
-            isEnrolled: enrolledCourseIds.includes(course._id.toString())
-        }));
+        const updatedCourses = courses.map(course => {
+            let isEnrolled = false;
+            if (req.user.role === "student") {
+                isEnrolled = enrolledCourseIds.includes(course._id.toString())
+            }
+            if (req.user.role === "teacher" && course.createdBy._id.toString === req.user._id.toString()) {
+                isEnrolled = true
+            }
+            if (req.user.role === "admin") {
+                isEnrolled: true
+            }
+            return {
+                ...course.toObject(),
+                isEnrolled
+            }
+        })
 
         res.status(200).json({
             success: true,
@@ -75,14 +87,28 @@ export const getCourseById = async (req, res) => {
         }
 
         // Check enrollment
-        const enrollment = await Enrollment.findOne({
-            student: req.user.id,
-            course: id
-        });
+        let isEnrolled = false;
+        if (req.user.role === "student") {
+            const enrollment = await Enrollment.findOne({
+                student: req.user._id,
+                course: id
+            })
+            isEnrolled = !!enrollment
+        }
+        if (
+            req.user.role === "teacher" &&
+            course.createdBy._id.toString() === req.user._id.toString()
+        ) {
+            isEnrolled = true;
+        }
+
+        if (req.user.role === "admin") {
+            isEnrolled = true;
+        }
 
         const updatedCourse = {
             ...course.toObject(),
-            isEnrolled: !!enrollment
+            isEnrolled
         };
 
         return res.status(200).json({
@@ -127,7 +153,7 @@ export const updateCourse = async (req, res) => {
 
 export const deleteCourse = async (req, res) => {
     try {
-        const  course  = await Course.findById(req.params.id)
+        const course = await Course.findById(req.params.id)
         if (!course) {
             return res.status(400).json({
                 success: false,

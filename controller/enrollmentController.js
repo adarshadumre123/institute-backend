@@ -3,6 +3,13 @@ import Enrollment from "../models/enrollmentModel.js";
 
 export const enrolledCourse = async(req,res)=>{
    try {
+
+    if(req.user.role!=="student"){
+        return res.status(403).json({
+            success:false,
+            message:"Only students can enrolled course"
+        })
+    }
      const{courseId}=req.body;
      const studentId = req.user.id
      const course = await Course.findById(courseId)
@@ -43,7 +50,8 @@ export const enrolledCourse = async(req,res)=>{
          amount:course.price,
          courseId
      })
-   } catch (error) {
+    } catch (error) {
+       console.log(error.message)
     res.status(500).json({
         success:false,
         message:error.message

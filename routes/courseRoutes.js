@@ -6,7 +6,7 @@ import isEnrolled from './../middleware/enrollmentMiddleware.js';
 
 const router = express.Router()
 
-router.post('/create-course',userAuth,roleMiddleware("admin"),createCourse)
+router.post('/create-course',userAuth,roleMiddleware("admin","teacher"),createCourse)
 router.get('/get-course',userAuth,getAllCourse)
 router.get('/get-course-id/:id',userAuth,getCourseById)
 router.put('/update-course',updateCourse,userAuth,roleMiddleware("admin","teacher"))

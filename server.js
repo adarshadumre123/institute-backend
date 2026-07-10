@@ -27,7 +27,7 @@ app.use("/api/v1/exams", examRoutes);
 app.use("/api/v1/assignment", assignmentRoutes);
 app.use("/api/v1/course", courseRoutes);
 app.use("/api/v1/stats", detailsRoutes);
-app.use("/api/v1/enroll",enrollmentRoutes );
+app.use("/api/v1/enrollment",enrollmentRoutes );
 app.use("/api/v1/payment",paymentRoutes );
 app.use("/api/v1/question",questionsRoutes );
 app.use("/api/v1/class",classRoutes);
