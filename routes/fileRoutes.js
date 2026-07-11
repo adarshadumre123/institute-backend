@@ -5,7 +5,6 @@ import { deleteFile, getAllFile, uploadFile } from '../controller/fileController
 const router = express.Router()
 
 router.post("/upload-file",upload.single("file"),uploadFile)
-
 router.get('/get-file',getAllFile)
 router.delete('/delete-file/:id',deleteFile)
 
