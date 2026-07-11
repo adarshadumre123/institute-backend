@@ -1,7 +1,6 @@
 import express from 'express'
 import cors from 'cors'
-import dotenv from 'dotenv'
-dotenv.config()
+import "dotenv/config";
 import connectDB from './config/db.js'
 import authRoutes from "./routes/authRoutes.js"
 import examRoutes from "./routes/examRoutes.js"
@@ -14,6 +13,8 @@ import questionsRoutes from "./routes/questionsRoutes.js"
 import classRoutes from "./routes/classRoutes.js"
 import dashboardRoutes from "./routes/dashboardRoutes.js"
 import databaseRoutes from "./routes/databaseRoutes.js"
+import fileRoutes from "./routes/fileRoutes.js"
+import uploadOnCloudinary from './controller/cloudinary.js';
 
 
 
@@ -33,6 +34,7 @@ app.use("/api/v1/question",questionsRoutes );
 app.use("/api/v1/class",classRoutes);
 app.use("/api/v1/dashboard",dashboardRoutes);
 app.use("/api/v1/database",databaseRoutes);
+app.use("/api/v1/file",fileRoutes);
 
 
 const port = process.env.PORT || 3000
