@@ -3,8 +3,7 @@ import Note from '../models/noteModel.js'
 
 export const uploadNote = async (req, res) => {
     try {
-        const { title, description } = req.body
-        const { courseId } = req.params
+        const { title, description,courseId } = req.body
 
         if (!title || !courseId) {
             return res.status(400).json({
@@ -12,14 +11,14 @@ export const uploadNote = async (req, res) => {
                 message: "title and course are required"
             })
         }
-        if (req.file) {
+        if (!req.file) {
             return res.status(400).json({
                 success: false,
                 message: "please upload a file"
             })
         }
         const uploadedFile = await uploadOnCloudinary(req.file.path)
-        if (uploadedFile) {
+        if (!uploadedFile) {
             return res.status(500).json({
                 success: false,
                 message: "cloudinary upload failed"
@@ -29,7 +28,7 @@ export const uploadNote = async (req, res) => {
         const note = await Note.create({
             title,
             description,
-            courseId,
+            course:courseId,
             teacher: req.user._id,
             fileUrl: uploadedFile.secure_url,
             publicId: uploadedFile.public_id,
@@ -40,7 +39,8 @@ export const uploadNote = async (req, res) => {
 
         res.status(201).json({
             success: true,
-            message: "Note uploaded successfully"
+            message: "Note uploaded successfully",
+            note
         })
     } catch (error) {
         res.status(500).json({
