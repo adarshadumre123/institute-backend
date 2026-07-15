@@ -15,6 +15,7 @@ import dashboardRoutes from "./routes/dashboardRoutes.js"
 import databaseRoutes from "./routes/databaseRoutes.js"
 import fileRoutes from "./routes/fileRoutes.js"
 import noteRoutes from "./routes/noteRoutes.js"
+import noticeRoutes from "./routes/noticeRoutes.js"
 import uploadOnCloudinary from './controller/cloudinary.js';
 
 
@@ -37,6 +38,7 @@ app.use("/api/v1/dashboard",dashboardRoutes);
 app.use("/api/v1/database",databaseRoutes);
 app.use("/api/v1/file",fileRoutes);
 app.use("/api/v1/note",noteRoutes);
+app.use("/api/v1/notice",noticeRoutes);
 
 
 const port = process.env.PORT || 3000

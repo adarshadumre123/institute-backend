@@ -16,11 +16,9 @@ const uploadOnCloudinary = async (localFilePath) => {
 
        
         const res = await cloudinary.uploader.upload(localFilePath, {
-            resource_type: "raw",
+            resource_type: "auto",
             folder: "test",
         });
-
-
         return res
     } catch (error) {
         if (localFilePath && fs.existsSync(localFilePath)) {

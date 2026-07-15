@@ -3,7 +3,8 @@ import Note from '../models/noteModel.js'
 
 export const uploadNote = async (req, res) => {
     try {
-        const { title, description,courseId } = req.body
+        const { title, description} = req.body
+        const{courseId}=req.params;
 
         if (!title || !courseId) {
             return res.status(400).json({
@@ -56,7 +57,6 @@ export const getNote = async (req, res) => {
         const { courseId } = req.params
         const notes = await Note.find({
             course: courseId,
-            teacher: req.user._id,
         }).sort({
             createdAt: -1,
         })

@@ -6,9 +6,9 @@ import { upload } from '../middleware/multerMiddleware.js';
 
 const router = express.Router()
 
-router.post('/upload',upload.single("file"),userAuth,
+router.post('/course/:courseId/note',upload.single("file"),userAuth,
 roleMiddleware("admin","teacher"),uploadNote)
-router.get('/get-note',userAuth,getNote)
+router.get('/course/:courseId/get-note',userAuth,getNote)
 router.get('/get-single-note',userAuth,getSingleNote)
 router.delete('/delete-note',userAuth,deleteNote)
 
