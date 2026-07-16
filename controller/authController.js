@@ -99,8 +99,7 @@ export const loginUser = async(req,res)=>{
 
 export const getUserById=async(req,res)=>{
   try {
-    const{id}=req.params;
-    const user = await User.findById(id)
+    const user = await User.findById(req.user._id)
     if(!user){
       return res.status(400).json({
         success:false,
@@ -157,28 +156,65 @@ export const deleteUser=async(req,res)=>{
     }
 }
 
-export const updateUser = async(req,res)=>{
- try {
-   const{id}=req.user.id
-   const user = await User.findByIdAndUpdate(id,req.body,{ 
-         new:true,
-         runValidators:true   
-   })
-   if(!user){
-     return res.status(404).json({
-       success:false,
-       message:'user not found'
-     })
-   }
-   res.status(200).json({
-     success:true,
-     message:"user updated successfully",
-     user
-   })
- } catch (error) {
-   res.status(500).json({
-      success: false,
-      message: error.message,
-    });
- }
+export const updateUser=async(req,res)=>{
+  try {
+    const {firstName,lastName,phone}=req.body;
+
+    const user = await User.findById(req.user._id)
+    if(!user){
+      return res.status(400).json({
+        success:false,
+        messsage:"user not found"
+      })
+    }
+    if(firstName) user.firstName=firstName
+    if(lastName) user.lastName=lastName
+    if(phone) user.phone=phone
+
+    await user.save();
+    res.status(200).json({
+      success:true,
+      message:"profile updated succesfully"
+    })
+  } catch (error) {
+    res.status(500).json({
+      success:false,
+      message:error.message
+    })
+  }
+}
+
+export const changeUserRole=async(req,res)=>{
+  try {
+    const{userId}=req.params
+    const{role}=req.body
+
+    if(!["student","role"].includes(role)){
+      return res.status(400).json({
+        success:false,
+        message:"invalid role"
+      })
+    }
+    const user = await User.findById(userId)
+    if(!user){
+      return res.status(400).json({
+        success:false,
+        message:"user not found"
+      })
+    }
+    user.role = role
+    await user.save();
+
+    res.status(200).json({
+      success:true,
+      message:"user role updated successfully",
+      user
+    })
+  } catch (error) {
+    
+        return res.status(500).json({
+            success: false,
+            message: error.message,
+        });
+  }
 }

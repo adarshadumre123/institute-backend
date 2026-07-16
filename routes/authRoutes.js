@@ -7,10 +7,11 @@ const router = express.Router();
 
 router.post('/register',registerUser);
 router.post('/login',loginUser);
-router.get('/get',getAllUser);
-router.get('/get/:id',getUserById);
-router.delete('/delete/:id',deleteUser);
-router.put('/update',userAuth,updateUser);
+router.get('/get',userAuth,getAllUser);
+router.get('/get-user',userAuth,getUserById);
+router.delete('/delete/:id',roleMiddleware("admin"),deleteUser);
+router.put('/update-profile',userAuth,updateUser);
+router.put('/change-role/:userId',userAuth,roleMiddleware("admin"),updateUser);
 
 export default router
 

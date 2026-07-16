@@ -1,4 +1,6 @@
 import mongoose from "mongoose"
+import Groq from "groq-sdk";
+
 
 const assignmentSchema = new mongoose.Schema({
     title:{
@@ -21,9 +23,7 @@ const assignmentSchema = new mongoose.Schema({
         type:String,
         required:true
     },
-    numberOfQuestion:{
-        type:Number,
-    },
+   
     difficulty:{
         type:String,
         enum:["easy","medium","hard"],
