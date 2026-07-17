@@ -9,6 +9,6 @@ router.post('/create-assignment',userAuth,roleMiddleware("teacher"),createAssign
 
 router.post('/generate-assignment/:courseId',userAuth,roleMiddleware("teacher","admin"),generateAssignment);
 
-router.get('/get-assignment',userAuth,getAssignment);
+router.get('/get-assignment/:courseId',userAuth,getAssignment);
 
 export default router

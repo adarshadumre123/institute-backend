@@ -3,6 +3,7 @@ import Class from "../models/classModel.js"
 export const createClass=async(req,res)=>{
   try {
       const{title,zoomLink,course,classDate}=req.body
+      const{courseId}=req.params
       if(!title || !zoomLink || !course || !classDate){
           return res.status(400).json({
               success:false,
@@ -12,14 +13,15 @@ export const createClass=async(req,res)=>{
       const newClass = await Class.create({
           title,
           zoomLink,
-          course,
+          course:courseId,
           classDate,
           createdBy:req.user._id
       })
       res.status(200).json({
           success:true,
           message:"class created successfully",
-          class:newClass
+          class:newClass,
+          course
       })
   } catch (error) {
      res.status(400).json({
@@ -31,7 +33,10 @@ export const createClass=async(req,res)=>{
 
 export const getAllClass = async(req,res)=>{
     try {
-        const newClass = await Class.find().populate("createdBy","firstName lastName email").populate("course",
+        const{courseId}=req.params
+        const newClass = await Class.find({
+            course:courseId
+        }).populate("createdBy","firstName lastName email").populate("course",
             "course subject"
         )
         res.status(200).json({

@@ -13,7 +13,7 @@ router.delete('/delete/:id',roleMiddleware("admin"),deleteUser);
 router.put('/update-profile',userAuth,updateUser);
 router.put('/change-role/:userId',userAuth,roleMiddleware("admin"),updateUser);
 
-export default router
+export default router  
 
 
 

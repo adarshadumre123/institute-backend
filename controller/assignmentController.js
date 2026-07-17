@@ -26,7 +26,7 @@ export const createAssignment = async (req, res) => {
       })
     }
 
-    const assignment = Assignment.create({
+    const assignment = await Assignment.create({
       title,
       subject,
       course,
@@ -53,7 +53,10 @@ export const createAssignment = async (req, res) => {
 
 export const getAssignment = async (req, res) => {
   try {
-    const assignments = await Assignment.find()
+    const { courseId } = req.params;
+    const assignments = await Assignment.find({
+      course:courseId
+    })
       .populate("createdBy", "firstName email")
       .sort({ createdAt: -1 });
 
@@ -61,6 +64,7 @@ export const getAssignment = async (req, res) => {
       success: true,
       count: assignments.length,
       assignments,
+      course: courseId
     });
   } catch (error) {
     res.status(500).json({
@@ -80,7 +84,7 @@ const groq = new Groq({
 
 export const generateAssignment = async (req, res) => {
   try {
-    const{courseId}=req.params
+    const { courseId } = req.params
     const { title, subject, description, totalQuestions, difficulty } = req.body
     if (!title || !subject || !description) {
       return res.status(400).json({
@@ -129,18 +133,18 @@ all questions have proper spacing and line should be break when question is fini
     });
 
     const generatedAssignment = completion.choices[0].message.content
-    
+
     const assignment = await Assignment.create({
       title,
       subject,
-      description:generatedAssignment,
+      description: generatedAssignment,
       difficulty,
-      course:courseId,
-      createdBy:req.user._id
+      course: courseId,
+      createdBy: req.user._id
 
     })
     res.status(200).json({
-      success:true,
+      success: true,
       assignment
     })
   } catch (error) {
