@@ -173,3 +173,23 @@ export const deleteCourse = async (req, res) => {
         })
     }
 }
+
+export const landingPageCourse = async (req, res) => {
+    try {
+        const courses = await Course.find()
+            .populate("createdBy", "firstName lastName email");
+
+     
+
+        res.status(200).json({
+            success: true,
+            course: courses
+        });
+
+    } catch (error) {
+        res.status(400).json({
+            success: false,
+            message: error.message
+        });
+    }
+};
