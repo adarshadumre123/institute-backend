@@ -25,7 +25,7 @@ app.use(
   cors({
     origin: [
       "http://localhost:5173",
-      "https://kanya-digital-platform-seven.vercel.app"
+      "https://kanva-digital-platform-seven.vercel.app"
     ],
     credentials: true,
   })
