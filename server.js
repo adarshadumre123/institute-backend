@@ -21,7 +21,15 @@ import uploadOnCloudinary from './controller/cloudinary.js';
 
 
 const app = express()
-app.use(cors())
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173",
+      "https://kanya-digital-platform-seven.vercel.app"
+    ],
+    credentials: true,
+  })
+);
 app.use(express.json())
 connectDB()
 
