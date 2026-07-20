@@ -1,5 +1,6 @@
 import User from "../models/userModels.js"
 import { sendOtpEmail } from './../utils/sendEmail';
+import  bcrypt  from 'bcryptjs';
 
 export const recoverPassword = async (req, res) => {
     try {
@@ -42,11 +43,19 @@ export const recoverPassword = async (req, res) => {
 const handleVerifyOtp = async (req, res) => {
     const { email, otp } = req.body
     try {
-        const otpRecord = await User.findOne({ email, otp })
+        const otpRecord = await User.findOne({ email, resetOtp
+            
+         })
         if (!otpRecord || Date.now() > otpExpiry) {
             return res.status(400).json({
                 success: false,
                 message: "invalid or expired otp"
+            })
+        }
+        if(otp!=otpRecord){
+            return res.status(400).json({
+                success:false,
+                message:"otp does not matched"
             })
         }
         res.status(200).json({
@@ -64,7 +73,28 @@ const handleVerifyOtp = async (req, res) => {
 export const handleResetPassword = async(req,res)=>{
     const{email,otp,newPassword}=req.body;
     try {
-        
+         const otpRecord = await User.findOne({ email, otp })
+        if (!otpRecord || Date.now() > otpExpiry) {
+            return res.status(400).json({
+                success: false,
+                message: "invalid or expired otp"
+            })
+        }
+        const user = await User.findOne({email})
+        if(!user){
+            return res.status(400).json({
+                success:false,
+                message:"user not found"
+            })
+        }
+        const salt = await bcrypt.genSalt(10)
+        const hashedPassword = await bcrypt.hash(newPassword,salt)
+        user.password=hashedPassword
+        await User.deleteMany({email})
+        res.status(200).json({
+            success:false,
+            message:"password reset successfully"
+        })
     } catch (error) {
         return res.status(400).json({
             success: false,
