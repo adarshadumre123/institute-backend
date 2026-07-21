@@ -4,7 +4,7 @@ import bcrypt from "bcryptjs";
 
 export const registerUser = async (req, res) => {
   try {
-    const { firstName, lastName, email, password, phone, role } = req.body;
+    const { firstName, lastName, email, password, phone,role } = req.body;
 
     if (!firstName || !lastName || !email || !password || !phone || !role) {
       return res.status(400).json({
@@ -22,13 +22,24 @@ export const registerUser = async (req, res) => {
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
+    console.log({
+    firstName,
+    lastName,
+    email,
+    password,
+    phone,
+    role
+});
+
+
+
     const user = await User.create({
       firstName,
       lastName,
       email,
       phone,
       password: hashedPassword,
-      role,
+      role
     });
 
     res.status(201).json({
