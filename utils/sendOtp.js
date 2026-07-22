@@ -5,7 +5,7 @@ export const sendOtp=async(toEmail,otp)=>{
         service:"gmail",
         auth:{
             user:process.env.EMAIL_USER,
-            user:process.env.EMAIL_PASS
+            pass:process.env.EMAIL_PASS
         }
     })
 
@@ -17,3 +17,6 @@ export const sendOtp=async(toEmail,otp)=>{
     }
     await transporter.sendMail(mailOptions)
 };
+
+
+
