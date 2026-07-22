@@ -178,9 +178,6 @@ export const landingPageCourse = async (req, res) => {
     try {
         const courses = await Course.find()
             .populate("createdBy", "firstName lastName email");
-
-     
-
         res.status(200).json({
             success: true,
             course: courses
