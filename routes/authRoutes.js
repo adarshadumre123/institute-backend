@@ -2,6 +2,7 @@ import express from 'express'
 import { deleteUser, getAllUser, getUserById, loginUser, registerUser, updateUser } from '../controller/authController.js';
 import userAuth from './../middleware/authMiddleware.js';
 import { roleMiddleware } from './../middleware/roleMiddleware.js';
+import { recoverPassword } from '../controller/otpController.js'
 
 const router = express.Router();
 
@@ -12,6 +13,10 @@ router.get('/get-user',userAuth,getUserById);
 router.delete('/delete/:id',roleMiddleware("admin"),deleteUser);
 router.put('/update-profile',userAuth,updateUser);
 router.put('/change-role/:userId',userAuth,roleMiddleware("admin"),updateUser);
+
+router.post('/recover-password',recoverPassword)
+// router.post('/verify-otp',verifyOtp)
+// router.post('/reset-password',resetPassword)
 
 export default router  
 
