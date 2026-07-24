@@ -186,7 +186,7 @@
 
 import User from './../models/userModels.js';
 import { sendOtpEmail } from './../utils/sendEmail.js';
-export const recoverPassword = async (req, res) => {
+export const recoverPasswords = async (req, res) => {
     try {
         const { email } = req.body;
         if (!email) {
@@ -216,8 +216,7 @@ export const recoverPassword = async (req, res) => {
             message:"otp has been send to user's email",
             otp:otp
         })
-    }catch{
-
+    }catch(error){
         console.log(error)
         return res.status(500).json({
             success: false,
