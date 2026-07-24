@@ -23,7 +23,7 @@ export const createCourse = async (req, res) => {
         })
     } catch (error) {
         res.status(400).json({
-            success: false,
+            success: false, 
             message: error.message
         })
     }
@@ -176,8 +176,12 @@ export const deleteCourse = async (req, res) => {
 
 export const landingPageCourse = async (req, res) => {
     try {
+                console.time("courseQuery");
+
         const courses = await Course.find()
             .populate("createdBy", "firstName lastName email");
+                    console.timeEnd("courseQuery");
+
         res.status(200).json({
             success: true,
             course: courses
